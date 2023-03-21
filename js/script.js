@@ -8,10 +8,12 @@ const userDay = document.getElementById('day-input');
 const $cardContainer = $('#card-container');
 
 let cardCount = 0;
+let display = false;
 let countryList = [];
 let holidayList = [];
 
 handleGetCountries();
+
 //handleGetHolidays();
 
 $('form').on('submit', handleGetHolidays);
@@ -25,13 +27,31 @@ function handleGetCountries() {
             //console.log(data.response.countries)
             countryList = data.response.countries;
             //console.log(countryList[0])
+            countryDropdown();
         },
         (error) => {
             console.log('bad request', error);
         }
     );
+    countryDropdown();
 }
 //console.log(countryList[0])
+
+function countryDropdown() {
+    let fragment = document.createDocumentFragment();
+    //console.log(fragment)
+    //console.log(countryList)
+    countryList.forEach(country => {
+        //console.log(countryList)
+        let opt = document.createElement('option');
+        opt.innerHTML = country.country_name;
+        opt.value = country['iso-3166'];
+        //console.log(opt)
+        fragment.appendChild(opt);
+        //console.log(fragment)
+    });
+    userCountry.appendChild(fragment);
+}
 
 // API call for holidays
 function handleGetHolidays(evt){
@@ -57,23 +77,38 @@ function renderHoliday(){
         holidayList.forEach(holiday => {
             createCard();
 
+            let $cardType = $(`#card-type-${cardCount}`);
+            let $cardDate = $(`#card-date-${cardCount}`);
             let $cardName = $(`#card-name-${cardCount}`);
             let $cardDesc = $(`#card-desc-${cardCount}`);
 
+            $cardType.text(holiday.primary_type)
+            $cardDate.text(holiday.date.iso);
             $cardName.text(holiday.name);
             $cardDesc.text(holiday.description);
+
         });
- 
+        display = true;
     }
 }
 
 function createCard() {
-    cardCount++
-    let newCard = document.createElement('section')
+    if (display) {
+        removeCards();
+    }
+    
+    cardCount++;
+    let newCard = document.createElement('section');
 
-    newCard.setAttribute('id',`card-${cardCount}`)
-    newCard.innerHTML = `<h3 id='card-name-${cardCount}'>New Card</h3>
-    <p id='card-desc-${cardCount}'>New Desc</p>`
+    newCard.setAttribute('id',`card-${cardCount}`);
+    newCard.innerHTML = `<span id='card-date-${cardCount}'></span><br><span id='card-type-${cardCount}'></span><h3 id='card-name-${cardCount}'>New Card</h3>
+    <p id='card-desc-${cardCount}'>New Desc</p>`;
 
-    $cardContainer.append(newCard)
+    $cardContainer.append(newCard);
+}
+
+function removeCards() {
+    $cardContainer.empty();
+    cardCount = 0;
+    display = false;
 }

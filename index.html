@@ -14,7 +14,9 @@
     <h2>Need something to celebrate?</h2>
     <h1>World Holiday Calendar!</h1>
     <form>
-        <input type='text' placeholder='country' id='country-input'>
+        <select id='country-input'>
+            <option>Please Choose a Country</option>
+        </select>
         <input type='text' placeholder='year' id='year-input' onclick=this.select()>
         <input type='text' placeholder='month' id='month-input' onclick=this.select()>
         <input type='text' placeholder='day' id='day-input' onclick=this.select()>
@@ -22,10 +24,7 @@
     </form>
 
     <main id='card-container'>
-            <!-- <section id='card-1'>
-                <h3 id='card-name-1'></h3>
-                <p id='card-desc-1'></p>
-            </section> -->
+
     </main>
 </body>
 </html>

@@ -12,6 +12,11 @@ let display = false;
 let countryList = [];
 let holidayList = [];
 
+let today = new Date();
+userYear.value = today.getFullYear()
+userMonth.value = today.getMonth() + 1
+userDay.value = today.getDate()
+
 handleGetCountries();
 
 //handleGetHolidays();
@@ -33,7 +38,6 @@ function handleGetCountries() {
             console.log('bad request', error);
         }
     );
-    countryDropdown();
 }
 //console.log(countryList[0])
 
@@ -56,18 +60,23 @@ function countryDropdown() {
 // API call for holidays
 function handleGetHolidays(evt){
     evt.preventDefault();
-    $.ajax({
-        url: `https://calendarific.com/api/v2/holidays?&api_key=${k}&country=${userCountry.value}&year=${userYear.value}&month=${userMonth.value}&day=${userDay.value}`
-    }).then(
-        (data) => {
-            //console.log(data.response.holidays)
-            holidayList = data.response.holidays;
-            renderHoliday();
-        },
-        (error) => {
-            console.log('bad request', error);
-        }
-    );
+
+    if (userCountry.value === 'Please Choose a Country') {
+        alert('You must choose a country first!')
+    } else {
+        $.ajax({
+            url: `https://calendarific.com/api/v2/holidays?&api_key=${k}&country=${userCountry.value}&year=${userYear.value}&month=${userMonth.value}&day=${userDay.value}`
+        }).then(
+            (data) => {
+                //console.log(data.response.holidays)
+                holidayList = data.response.holidays;
+                renderHoliday();
+            },
+            (error) => {
+                console.log('bad request', error);
+            }
+        );
+    }
 }
 //console.log(holidayList)
 
@@ -132,4 +141,8 @@ function removeCards() {
 function nameFromIso(iso) {
     let countryName = countryList.find(country => country['iso-3166'] === iso)
     return countryName.country_name
+}
+
+function allCountries() {
+    
 }

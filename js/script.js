@@ -77,18 +77,34 @@ function renderHoliday(){
         holidayList.forEach(holiday => {
             createCard();
 
-            let $cardType = $(`#card-type-${cardCount}`);
             let $cardDate = $(`#card-date-${cardCount}`);
+            let $cardType = $(`#card-type-${cardCount}`);
             let $cardName = $(`#card-name-${cardCount}`);
             let $cardDesc = $(`#card-desc-${cardCount}`);
 
-            $cardType.text(holiday.primary_type)
             $cardDate.text(holiday.date.iso);
+            $cardType.text(holiday.primary_type)
             $cardName.text(holiday.name);
             $cardDesc.text(holiday.description);
 
         });
         display = true;
+    } else {
+        createCard();
+
+        let $cardDate = $(`#card-date-${cardCount}`);
+        let $cardType = $(`#card-type-${cardCount}`);
+        let $cardName = $(`#card-name-${cardCount}`);
+        let $cardDesc = $(`#card-desc-${cardCount}`);
+
+        let countryName = nameFromIso(userCountry.value);
+
+        $cardDate.text(`${userYear.value}-${userMonth.value}-${userDay.value}`);
+        //console.log(userCountry.value)
+        //console.log(nameFromIso(userCountry.value))
+        $cardType.text(countryName)
+        $cardName.text('None');
+        $cardDesc.text(`Sadly, there is no reason to celebrate in ${countryName} on the date in question :(`);
     }
 }
 
@@ -111,4 +127,9 @@ function removeCards() {
     $cardContainer.empty();
     cardCount = 0;
     display = false;
+}
+
+function nameFromIso(iso) {
+    let countryName = countryList.find(country => country['iso-3166'] === iso)
+    return countryName.country_name
 }

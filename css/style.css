@@ -1,23 +1,43 @@
+body {
+    margin: auto 0;
+    text-align: center;
+    background: lightblue;
+}
+
 main {
     background: lightcyan;
+}
+
+form{
+    background: teal;
+}
+
+p, h3 {
+    padding: 0 10px;
 }
 
 #card-container {
     display: flex;
     flex-flow: wrap;
+    justify-content: center;
 }
 
 section {
     display: inline-block;
     text-align: center;
 
-    max-width: 30%;
+    width: 30%;
     height: 300px;
 
     margin: 5px;
     border: 1px solid black;
     border-radius: 10%;
-    
     background: lightblue;
-    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    section {
+        width: 70%;
+        height: 250px
+    }
 }

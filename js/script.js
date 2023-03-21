@@ -5,6 +5,11 @@ const userYear = document.getElementById('year-input');
 const userMonth = document.getElementById('month-input');
 const userDay = document.getElementById('day-input');
 
+let today = new Date();
+userYear.value = today.getFullYear()
+userMonth.value = today.getMonth() + 1
+userDay.value = today.getDate()
+
 const $cardContainer = $('#card-container');
 
 let cardCount = 0;
@@ -12,13 +17,7 @@ let display = false;
 let countryList = [];
 let holidayList = [];
 
-let today = new Date();
-userYear.value = today.getFullYear()
-userMonth.value = today.getMonth() + 1
-userDay.value = today.getDate()
-
 handleGetCountries();
-
 //handleGetHolidays();
 
 $('form').on('submit', handleGetHolidays);
@@ -91,13 +90,11 @@ function renderHoliday(){
             let $cardName = $(`#card-name-${cardCount}`);
             let $cardDesc = $(`#card-desc-${cardCount}`);
 
-            $cardDate.text(holiday.date.iso);
+            $cardDate.text(holiday.date.iso.slice(0,10));
             $cardType.text(holiday.primary_type)
             $cardName.text(holiday.name);
             $cardDesc.text(holiday.description);
-
         });
-        display = true;
     } else {
         createCard();
 
@@ -115,6 +112,7 @@ function renderHoliday(){
         $cardName.text('None');
         $cardDesc.text(`Sadly, there is no reason to celebrate in ${countryName} on the date in question :(`);
     }
+    display = true;
 }
 
 function createCard() {
@@ -141,8 +139,4 @@ function removeCards() {
 function nameFromIso(iso) {
     let countryName = countryList.find(country => country['iso-3166'] === iso)
     return countryName.country_name
-}
-
-function allCountries() {
-    
 }

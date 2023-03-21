@@ -6,10 +6,8 @@ const userMonth = document.getElementById('month-input');
 const userDay = document.getElementById('day-input');
 
 const $cardContainer = $('#card-container');
-let $cardName = $('#card-name-1');
-let $cardDesc = $('#card-desc-1');
 
-let holidayCount = 0;
+let cardCount = 0;
 let countryList = [];
 let holidayList = [];
 
@@ -56,9 +54,26 @@ function handleGetHolidays(evt){
 function renderHoliday(){
     //console.log(holidayList.length)
     if (holidayList.length > 0) {
-        // holidayCount++
-        // x = document.createElement('section')
-        $cardName.text(holidayList[0].name)
-        $cardDesc.text(holidayList[0].description)
+        holidayList.forEach(holiday => {
+            createCard();
+
+            let $cardName = $(`#card-name-${cardCount}`);
+            let $cardDesc = $(`#card-desc-${cardCount}`);
+
+            $cardName.text(holiday.name);
+            $cardDesc.text(holiday.description);
+        });
+ 
     }
+}
+
+function createCard() {
+    cardCount++
+    let newCard = document.createElement('section')
+
+    newCard.setAttribute('id',`card-${cardCount}`)
+    newCard.innerHTML = `<h3 id='card-name-${cardCount}'>New Card</h3>
+    <p id='card-desc-${cardCount}'>New Desc</p>`
+
+    $cardContainer.append(newCard)
 }

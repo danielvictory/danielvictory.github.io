@@ -3,6 +3,7 @@ body {
     text-align: center;
     background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/858/865/small/squared-paper-seamless-pattern-for-school-notebook-millimeter-graph-paper-grid-graph-4x4-per-inch-notebook-for-writing-hieroglyphs-editable-stroke-illustration-on-white-background-free-vector.jpg');
     background-color: lightblue;
+    font-family: sans-serif;
 }
 
 form{
@@ -102,8 +103,8 @@ button {
     border: 1px solid black;
     width: 150px;
     height: 20px;
-    background: rgb(97, 166, 175);
-    color:rgb(250, 237, 215);
+    background: rgb(205, 235, 238);
+    /* color:rgb(250, 237, 215); */
 }
 
 #card-container {

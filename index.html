@@ -25,7 +25,7 @@
         <!-- <br> -->
 
         <label for='year-input'>Year (required):</label>
-        <input type="number" id="year-input" min='1900' max='2049' placeholder="Input year from 1900-2049" onclick=this.select()>
+        <input type="number" id="year-input" min='1500' max='2049' placeholder="Input year from 1900-2049" onclick=this.select()>
         <!-- <input type='text' placeholder='Year Required. Input 4 valid digits: XXXX' id='year-input' onclick=this.select()> -->
         <!-- <br> -->
 
@@ -52,10 +52,10 @@
         <label for='day-input'>Day (optional):</label>
         <input type="number" id="day-input" min='1' max='31' placeholder="Input day from 1-31 or leave this option" onclick=this.select()>
         <!-- <br> -->
-        <button id='today-button'>Use Today!</button>
         <div id="button-container">
             <input type="submit" id="input-button" value="Get Holidays">
-        </div>
+        </div>        
+        <button id='today-button'>Use today's date!</button>
     </form>
 
     <main id='card-container'>

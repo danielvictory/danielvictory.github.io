@@ -60,13 +60,20 @@ function countryDropdown() {
 function handleGetHolidays(evt){
     evt.preventDefault();
 
+    let leapYear = false;
+    if ((0 == userYear.value % 4) && (0 != userYear.value % 100) || (0 == userYear.value % 400)){
+        leapYear = true;
+    }
+
     if (userCountry.value === 'Please Choose a Country') {
         alert('You must choose a country first!')
     } else if (!userYear.value) {
         alert('You must choose a year first!')
-    } else if (userMonth.value === '2' && userDay.value > 28) {
-        alert('February ends on the 28th. Please choose a valid date.')
-    } else if (userDay.value === '31' && (userMonth.value === '4' || userMonth.value === '6' || userMonth.value === '9' || userMonth.value === '11')){
+    } else if (!leapYear && userMonth.value === '2' && userDay.value > 28) {
+        alert('February ends on the 28th unless it is a leap year. Please choose a valid date.')
+    } else if (leapYear && userMonth.value === '2' && userDay.value>29) {
+        alert(`The year ${userYear.value} is a Leap Year! February only gets one extra day though. Please choose a valid date.`)
+    }else if (userDay.value === '31' && (userMonth.value === '4' || userMonth.value === '6' || userMonth.value === '9' || userMonth.value === '11')){
         alert(`The month in question does not have 31 days. Please choose a valid date.`)
     } else {
         $.ajax({
@@ -76,7 +83,8 @@ function handleGetHolidays(evt){
                 //console.log(data.response.holidays)
                 holidayList = data.response.holidays;
                 if (holidayList === undefined) {
-                    alert(`There is no data for this country during ${userYear.value}.  Please input another year.`)
+                    let countryName = nameFromIso(userCountry.value);
+                    alert(`There is no data for ${countryName} during ${userYear.value}.  Please input another year.`)
                 } else {
                 renderHoliday();
                 }
@@ -120,7 +128,7 @@ function renderHoliday(){
         //console.log(nameFromIso(userCountry.value))
         $cardType.text(countryName)
         $cardName.text('None');
-        $cardDesc.text(`Sadly, there is no official reason to celebrate in ${countryName} on the date in question :( We hope you still find many personal reasons to party!`);
+        $cardDesc.text(`Sadly, there is no official reason to celebrate in ${countryName} on the date in question :( \n We hope you still find many personal reasons to party!`);
     }
     display = true;
 }

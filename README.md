@@ -38,7 +38,7 @@ Choosing a country from the 200+ listed countries:
 ![Choosing a country from the 200+ listed countries](/assets/holidayCheck-2-countryDropdown.png)
 
 Searching using the "Use today's date!" button (for March 23, 2023):
-![Searching using the "Use today's date!" button (for March 23, 2023)](/assets/holidayCheck-3-todays-holiday.png)
+![Searching using the "Use today's date!" button (for March 23, 2023)](/assets/holidayCheck-3-todayHoliday.png)
 
 Searching for tomorrow (March 24, 2023), but, unfortunately, there are no official holidays:
 ![Searching for tomorrow (March 24, 2023), but, unfortunately, there are no official holidays](/assets/holidayCheck-4-nodata.png)

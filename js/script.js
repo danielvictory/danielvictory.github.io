@@ -7,8 +7,8 @@ const userDay = document.getElementById('day-input');
 
 let today = new Date();
 userYear.value = today.getFullYear()
-userMonth.value = today.getMonth() + 1
-userDay.value = today.getDate()
+// userMonth.value = today.getMonth() + 1
+// userDay.value = today.getDate()
 
 const $cardContainer = $('#card-container');
 

@@ -1,7 +1,8 @@
 body {
     margin: auto 0;
     text-align: center;
-    background: lightblue;
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/858/865/small/squared-paper-seamless-pattern-for-school-notebook-millimeter-graph-paper-grid-graph-4x4-per-inch-notebook-for-writing-hieroglyphs-editable-stroke-illustration-on-white-background-free-vector.jpg');
+    background-color: lightblue;
 }
 
 main {
@@ -10,10 +11,31 @@ main {
 
 form{
     background: teal;
+    color: lightblue;
+    width: 600px;
+    margin: 0 auto;
+
+
+    display: grid;
+    /* flex-flow: wrap;
+    justify-content: center */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 5;
+    grid-column: -1 / span 2
 }
 
 p, h3 {
     padding: 0 10px;
+}
+
+input {
+    margin: 5px;
+    width: 250px;
+}
+
+select {
+    margin: 5px;
+    width: 258px;
 }
 
 #card-container {
@@ -39,5 +61,15 @@ section {
     section {
         width: 70%;
         height: 250px
+    }
+
+    form {
+        width: 300px;
+        margin: 0 auto;
+        
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        justify-items: center;
     }
 }

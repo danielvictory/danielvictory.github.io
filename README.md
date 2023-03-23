@@ -4,6 +4,8 @@ If you need something to celebrate today, search the world's calendar to find a 
 
 The only required parameters are a Country and a Year to search for a reason to start the party.
 
+## Required Info and Instructions
+
 ## Built with:
 - HTML
 - CSS
@@ -16,3 +18,5 @@ The only required parameters are a Country and a Year to search for a reason to 
 
 ## Click through to the World Holiday Check here:
 
+
+## Future Improvements

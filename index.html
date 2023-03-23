@@ -21,7 +21,7 @@
         <!-- <br> -->
 
         <label for='year-input'>Year (required):</label>
-        <input type='text' placeholder='year' id='year-input' onclick=this.select()>
+        <input type='text' placeholder='Year Required. Input 4 valid digits: XXXX' id='year-input' onclick=this.select()>
         <!-- <br> -->
 
         <label for='month-input'>Month (optional):</label>
@@ -47,8 +47,9 @@
         <label for='day-input'>Day (optional):</label>
         <input type="number" id="day-input" min='1' max='31' placeholder="Input day from 1-31 or leave blank" onclick=this.select()>
         <!-- <br> -->
-
-        <input type="submit" value="Get Holidays">
+        <div id="button-container">
+            <input type="submit" id="input-button" value="Get Holidays">
+        </div>
     </form>
 
     <main id='card-container'>

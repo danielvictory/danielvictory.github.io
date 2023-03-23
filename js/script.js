@@ -124,7 +124,7 @@ function createCard() {
     let newCard = document.createElement('section');
 
     newCard.setAttribute('id',`card-${cardCount}`);
-    newCard.innerHTML = `<span id='card-date-${cardCount}'></span><br><span id='card-type-${cardCount}'></span><h3 id='card-name-${cardCount}'>New Card</h3>
+    newCard.innerHTML = `<span id='card-date-${cardCount}'></span><br><br><span id='card-type-${cardCount}'></span><h3 id='card-name-${cardCount}'>New Card</h3>
     <p id='card-desc-${cardCount}'>New Desc</p>`;
 
     $cardContainer.append(newCard);

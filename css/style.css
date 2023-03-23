@@ -5,23 +5,34 @@ body {
     background-color: lightblue;
 }
 
-main {
-    background: lightcyan;
-}
-
 form{
-    background: teal;
-    color: lightblue;
-    width: 600px;
+    background: rgb(157, 221, 221);
+
+    width: 500px;
     margin: 0 auto;
+    padding: 5px;
+    border-radius: 10px;
 
 
     display: grid;
     /* flex-flow: wrap;
     justify-content: center */
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
     grid-template-rows: 5;
-    grid-column: -1 / span 2
+    /* grid-template-areas:
+        "country country"
+        "year year"
+        "month month"
+        "day day"
+        "button"; */
+}
+
+#button-container {
+    grid-column: span 2;
+}
+
+main {
+    background: rgb(157, 221, 221);
 }
 
 p, h3 {
@@ -31,14 +42,31 @@ p, h3 {
 input {
     margin: 5px;
     width: 250px;
+    background-color: rgb(250, 237, 215);
+    border: none;
 }
 
 select {
     margin: 5px;
-    width: 258px;
+    width: 254px;
+    background: rgb(250, 237, 215);
+    border: none;
+}
+
+#input-button {
+    /* grid-area: "button";
+    grid-column-end: span 2; */
+
+    border: 1px solid black;
+    width: 150px;
 }
 
 #card-container {
+    margin: 10px auto;
+    width: 80%;
+    border-radius: 20px;
+    /* padding: 10px; */
+
     display: flex;
     flex-flow: wrap;
     justify-content: center;
@@ -49,18 +77,18 @@ section {
     text-align: center;
 
     width: 30%;
-    height: 300px;
+    height: 325px;
 
     margin: 5px;
     border: 1px solid black;
     border-radius: 10%;
-    background: lightblue;
+    background: rgb(250, 237, 215);
 }
 
 @media only screen and (max-width: 600px) {
     section {
-        width: 70%;
-        height: 250px
+        width: 90%;
+        height: 300px
     }
 
     form {
@@ -71,5 +99,9 @@ section {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         justify-items: center;
+    }
+
+    #button-container {
+        grid-column: span 1;
     }
 }

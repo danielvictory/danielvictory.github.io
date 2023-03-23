@@ -6,9 +6,7 @@ const userMonth = document.getElementById('month-input');
 const userDay = document.getElementById('day-input');
 
 let today = new Date();
-userYear.value = today.getFullYear()
-// userMonth.value = today.getMonth() + 1
-// userDay.value = today.getDate()
+userYear.value = today.getFullYear();
 
 const $cardContainer = $('#card-container');
 
@@ -20,6 +18,7 @@ let holidayList = [];
 handleGetCountries();
 //handleGetHolidays();
 
+$('#today-button').on('click', useToday);
 $('form').on('submit', handleGetHolidays);
 
 // API call for country list
@@ -49,6 +48,7 @@ function countryDropdown() {
         let opt = document.createElement('option');
         opt.innerHTML = country.country_name;
         opt.value = country['iso-3166'];
+        opt.className = 'none';
         //console.log(opt)
         fragment.appendChild(opt);
         //console.log(fragment)
@@ -62,6 +62,12 @@ function handleGetHolidays(evt){
 
     if (userCountry.value === 'Please Choose a Country') {
         alert('You must choose a country first!')
+    } else if (!userYear.value) {
+        alert('You must choose a year first!')
+    } else if (userMonth.value === '2' && userDay.value > 28) {
+        alert('February ends on the 28th. Please choose a valid date.')
+    } else if (userDay.value === '31' && (userMonth.value === '4' || userMonth.value === '6' || userMonth.value === '9' || userMonth.value === '11')){
+        alert(`The month in question does not have 31 days. Please choose a valid date.`)
     } else {
         $.ajax({
             url: `https://calendarific.com/api/v2/holidays?&api_key=${k}&country=${userCountry.value}&year=${userYear.value}&month=${userMonth.value}&day=${userDay.value}`
@@ -69,7 +75,11 @@ function handleGetHolidays(evt){
             (data) => {
                 //console.log(data.response.holidays)
                 holidayList = data.response.holidays;
+                if (holidayList === undefined) {
+                    alert(`There is no data for this country during ${userYear.value}.  Please input another year.`)
+                } else {
                 renderHoliday();
+                }
             },
             (error) => {
                 console.log('bad request', error);
@@ -110,7 +120,7 @@ function renderHoliday(){
         //console.log(nameFromIso(userCountry.value))
         $cardType.text(countryName)
         $cardName.text('None');
-        $cardDesc.text(`Sadly, there is no reason to celebrate in ${countryName} on the date in question :(`);
+        $cardDesc.text(`Sadly, there is no official reason to celebrate in ${countryName} on the date in question :( We hope you still find many personal reasons to party!`);
     }
     display = true;
 }
@@ -139,4 +149,12 @@ function removeCards() {
 function nameFromIso(iso) {
     let countryName = countryList.find(country => country['iso-3166'] === iso)
     return countryName.country_name
+}
+
+function useToday(evt) {
+    evt.preventDefault();
+    userMonth.value = today.getMonth() + 1
+    userDay.value = today.getDate()
+
+    userMonth.classList.remove('first-choice');
 }

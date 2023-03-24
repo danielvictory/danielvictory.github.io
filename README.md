@@ -1,4 +1,4 @@
-# World Holiday Check
+# World Holiday Lookup
 
 If you need something to celebrate today, search the world's calendar to find a reason to celebrate!
 

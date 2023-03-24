@@ -18,6 +18,7 @@ let holidayList = [];
 handleGetCountries();
 
 $('#today-button').on('click', useToday);
+$('#reset-button').on('click', clearHolidays);
 $('form').on('submit', handleGetHolidays);
 
 // API call for country list
@@ -139,6 +140,12 @@ function removeCards() {
     $cardContainer.empty();
     cardCount = 0;
     display = false;
+}
+
+function clearHolidays(evt) {
+    evt.preventDefault();
+
+    removeCards();
 }
 
 function nameFromIso(iso) {

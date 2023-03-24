@@ -15,16 +15,8 @@ form{
     border-radius: 10px;
 
     display: grid;
-    /* flex-flow: wrap;
-    justify-content: center */
     grid-template-columns: 40% 60%;
     grid-template-rows: 5;
-    /* grid-template-areas:
-        "country country"
-        "year year"
-        "month month"
-        "day day"
-        "button"; */
 }
 
 /* #button-container {
@@ -72,7 +64,6 @@ section {
 }
 
 button {
-    /* margin: 5px, 0 0 0; */
     place-self: center;
 }
 
@@ -97,21 +88,16 @@ button {
 }
 
 #input-button, #today-button{
-    /* grid-area: "button";
-    grid-column-end: span 2; */
-
     border: 1px solid black;
     width: 150px;
     height: 20px;
     background: rgb(205, 235, 238);
-    /* color:rgb(250, 237, 215); */
 }
 
 #card-container {
     margin: 20px auto;
     width: 80%;
     border-radius: 20px;
-    /* padding: 10px 0 0 0; */
 
     display: flex;
     flex-flow: wrap;

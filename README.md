@@ -32,18 +32,23 @@ To use:
 ## App in action: Screenshots
 
 World Holiday Lookup Landing:
+
 ![World Holiday Lookup Landing](/assets/holidayCheck-1-landing.png)
 
 Choosing a country from the 200+ listed countries:
+
 ![Choosing a country from the 200+ listed countries](/assets/holidayCheck-2-countryDropdown.png)
 
 Searching using the "Use today's date!" button (for March 23, 2023):
+
 ![Searching using the "Use today's date!" button (for March 23, 2023)](/assets/holidayCheck-3-todayHoliday.png)
 
 Searching for tomorrow (March 24, 2023), but, unfortunately, there are no official holidays:
+
 ![Searching for tomorrow (March 24, 2023), but, unfortunately, there are no official holidays](/assets/holidayCheck-4-nodata.png)
 
 Searching using the whole year setting to see the full set of holidays coming up!
+
 ![Searching using the whole year setting to see the full set of holidays coming up!](/assets/holidayCheck-5-fullYear.png)
 
 ## Future Improvements

@@ -16,7 +16,6 @@ let countryList = [];
 let holidayList = [];
 
 handleGetCountries();
-//handleGetHolidays();
 
 $('#today-button').on('click', useToday);
 $('form').on('submit', handleGetHolidays);
@@ -27,9 +26,7 @@ function handleGetCountries() {
         url: `https://calendarific.com/api/v2/countries?&api_key=${k}`
     }).then(
         (data) => {
-            //console.log(data.response.countries)
             countryList = data.response.countries;
-            //console.log(countryList[0])
             countryDropdown();
         },
         (error) => {
@@ -37,21 +34,16 @@ function handleGetCountries() {
         }
     );
 }
-//console.log(countryList[0])
 
 function countryDropdown() {
     let fragment = document.createDocumentFragment();
-    //console.log(fragment)
-    //console.log(countryList)
     countryList.forEach(country => {
-        //console.log(countryList)
+
         let opt = document.createElement('option');
         opt.innerHTML = country.country_name;
         opt.value = country['iso-3166'];
         opt.className = 'none';
-        //console.log(opt)
         fragment.appendChild(opt);
-        //console.log(fragment)
     });
     userCountry.appendChild(fragment);
 }
@@ -80,7 +72,6 @@ function handleGetHolidays(evt){
             url: `https://calendarific.com/api/v2/holidays?&api_key=${k}&country=${userCountry.value}&year=${userYear.value}&month=${userMonth.value}&day=${userDay.value}`
         }).then(
             (data) => {
-                //console.log(data.response.holidays)
                 holidayList = data.response.holidays;
                 if (holidayList === undefined) {
                     let countryName = nameFromIso(userCountry.value);
@@ -95,10 +86,8 @@ function handleGetHolidays(evt){
         );
     }
 }
-//console.log(holidayList)
 
 function renderHoliday(){
-    //console.log(holidayList.length)
     if (holidayList.length > 0) {
         holidayList.forEach(holiday => {
             createCard();
@@ -124,8 +113,6 @@ function renderHoliday(){
         let countryName = nameFromIso(userCountry.value);
 
         $cardDate.text(`${userYear.value}-${userMonth.value}-${userDay.value}`);
-        //console.log(userCountry.value)
-        //console.log(nameFromIso(userCountry.value))
         $cardType.text(countryName)
         $cardName.text('None');
         $cardDesc.text(`Sadly, there is no official reason to celebrate in ${countryName} on the date in question :( \n We hope you still find many personal reasons to party!`);
